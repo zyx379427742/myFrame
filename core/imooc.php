@@ -9,6 +9,18 @@ class imooc
     static public function run()
     {
         $route = new \core\lib\route();
+        $ctrlClass = $route->ctrl;
+        $action = $route->action;
+        $ctrlFile = APP . '/ctrl/' . $ctrlClass . 'Ctrl.php';
+        $cltrClass = '\\' . MODULE . '\ctrl\\' . $ctrlClass . 'Ctrl';
+        if (is_file($ctrlFile)) {
+            include $ctrlFile;
+            $ctrl = new $cltrClass;
+            $ctrl->$action();
+        } else {
+            throw new \Exception('找不到控制器' . $ctrlClass);
+        }
+
     }
 
     static public function load($class)
@@ -30,7 +42,10 @@ class imooc
                 return false;
             }
         }
+    }
 
+    public function assign($data)
+    {
 
     }
 }

@@ -9,6 +9,7 @@
 define('IMOOC', realpath(__DIR__));     //定义当前框架所在的根目录
 define('CORE', IMOOC.'/core');          //定义框架核心文件所处的目录
 define('APP', IMOOC.'/app');            //定义项目文件所处的目录
+define('MODULE', 'app');
 
 define('DEBUG', true);                  //定义是否开启调试模式
 if (DEBUG) {
